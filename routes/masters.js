@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
 
 })
   .get('/master/:id', function (req, res, next) {
-    res.send(id)
+    res.send(req.params.id)
   })
   .post('/master', function (req, res, next) {
 
@@ -26,10 +26,12 @@ router.get('/', function (req, res, next) {
 
   })
   .put('/master/:id', function (req, res, next) {
-    // res.send(handlers.update)
+    Master.updateMasterById(req.params.id, req.body, function (err, master){
+      res.send(master)
+    })
   })
   .delete('/master/:id', function (req, res, next) {
-    //res.send(handlers.remove)
+    res.send("i'm delete (No)");
   })
 
 module.exports = router;

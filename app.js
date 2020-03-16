@@ -8,6 +8,9 @@ var db = require('./mongoose'); // Файл работы с базой MongoDB
 
 var indexRouter = require('./routes/index');
 var mastersRouter = require('./routes/masters');
+var servicesRouter = require('./routes/services');
+var schedulesRouter = require('./routes/schedules');
+var directoryRouter = require('./routes/directorys')
 
 var app = express();
 
@@ -23,6 +26,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/api/masters', mastersRouter);
+app.use('/api/services', servicesRouter);
+app.use('/api/schedules', schedulesRouter);
+app.use('/api/directory', directoryRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

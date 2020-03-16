@@ -10,6 +10,7 @@ var db = mongoose.connection;
 mongoose.set('useCreateIndex', true);
 
 db.on('error', function (err) {
+    console.log('DB connect error')
   // Обрабатываем ошибку
 });
 db.once('open', function callback() {

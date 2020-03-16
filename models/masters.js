@@ -18,7 +18,7 @@ module.exports.createMaster = function (newMaster, callback) {
 
 }
 
-module.exports.getWineById = function (id, callback) {
+module.exports.getMasterById = function (id, callback) {
 
     Master.findById(id, callback);
 
@@ -33,10 +33,4 @@ module.exports.updateMasterById = function(idMaster, data, callback){
 
   Master.updateOne({ _id: idMaster }, data, { new: true },callback)
   
-}
-
-module.exports.getMasterById = function(id, callback){
-
-  Master.findById(id, callback);
-
 }
