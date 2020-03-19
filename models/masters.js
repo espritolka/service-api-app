@@ -6,6 +6,12 @@ var MasterSchema = mongoose.Schema({
         type: String,
         index: true,
         unique: true,
+    },
+    label: {
+      type: String,
+    },
+    value:{
+      type: String,
     }
 });
 

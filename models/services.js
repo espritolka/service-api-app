@@ -10,8 +10,13 @@ var ServiceSchema = mongoose.Schema({
     price: {
         type: Number,
         index: true,
-        unique: false
-    }
+    },
+    label: {
+        type: String,
+      },
+    value:{
+        type: String,
+      }
 });
 
 var Service = module.exports = mongoose.model('Service', ServiceSchema);

@@ -17,21 +17,36 @@ router.get('/', function (req, res, next) {
 
     var newMaster = new Master({
       name: req.body.name,
+      label: req.body.name,
+      value: '123'
     })
-
+    var id = '';
     Master.createMaster(newMaster, function (err, master) {
       if (err) throw err;
-      res.send(master).end()
+      id = master._id
+      console.log('id -->>',id)
+      Master.updateMasterById(id, {value: id}, function (err, master){
+        res.send(master).end()
+      })
+     // res.send(master).end()
     });
+   
 
   })
   .put('/master/:id', function (req, res, next) {
-    Master.updateMasterById(req.params.id, req.body, function (err, master){
+    var objData = {
+      name: req.body.name,
+      label: req.body.name
+    }
+    Master.updateMasterById(req.params.id, objData, function (err, master){
       res.send(master)
     })
   })
   .delete('/master/:id', function (req, res, next) {
-    res.send("i'm delete (No)");
+    Master.findByIdAndDelete(req.params.id, function(err, directory){
+      if (err) throw err;
+      res.send("ok");
+    })
   })
 
 module.exports = router;

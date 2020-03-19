@@ -17,7 +17,8 @@ router.get('/:type', function (req, res, next) {
 
     var newDirectory = new Directory({
       type: req.params.type,
-      value: req.body.value
+      value: req.body.value,
+      label: req.body.label
     })
 
     Directory.createDirectory(newDirectory, function (err, directory) {
@@ -27,14 +28,18 @@ router.get('/:type', function (req, res, next) {
 
   })
   .put('/:type/:id', function (req, res, next) {
-      console.log(req.params.type, req.body)
+    if (err) throw err;
     Directory.updateDirectoryById(req.params.id, req.body, function (err, directory) {
       res.send(directory)
     })
   })
 
   .delete('/:type/:id', function (req, res, next) {
-    res.send("i'm delete (No)");
+    Directory.findByIdAndDelete(req.params.id, function(err, directory){
+      if (err) throw err;
+      res.send("ok");
+    })
+    
   })
 
 module.exports = router;

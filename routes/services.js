@@ -17,12 +17,16 @@ router.get('/', function (req, res, next) {
 
     var newService = new Service({
       name: req.body.name,
+      label: req.body.name,
       price: req.body.price
     })
 
     Service.createService(newService, function (err, service) {
       if (err) throw err;
-      res.send(service).end()
+      id = service._id
+      Service.updateServiceById(id, {value: id}, function (err, service){
+        res.send(service).end()
+      })
     });
 
   })
@@ -32,7 +36,10 @@ router.get('/', function (req, res, next) {
     })
   })
   .delete('/service/:id', function (req, res, next) {
-    res.send("i'm delete (No)");
+    Service.findByIdAndDelete(req.params.id, function(err, directory){
+      if (err) throw err;
+      res.send("ok");
+    })
   })
 
 module.exports = router;

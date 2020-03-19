@@ -4,6 +4,10 @@ var mongoose = require('mongoose');
 var DirectorySchema = mongoose.Schema({
     value: {
         type: String,
+        index: true,
+    },
+    label: {
+        type: String,
         unique: true,
         index: true,
     },
