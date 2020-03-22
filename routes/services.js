@@ -23,10 +23,7 @@ router.get('/', function (req, res, next) {
 
     Service.createService(newService, function (err, service) {
       if (err) throw err;
-      id = service._id
-      Service.updateServiceById(id, {value: id}, function (err, service){
-        res.send(service).end()
-      })
+      res.send(service)
     });
 
   })

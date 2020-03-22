@@ -2,10 +2,7 @@ var mongoose = require('mongoose');
 
 // Service Schema
 var DirectorySchema = mongoose.Schema({
-    value: {
-        type: String,
-        index: true,
-    },
+
     label: {
         type: String,
         unique: true,
@@ -14,6 +11,9 @@ var DirectorySchema = mongoose.Schema({
     type: {
         type: String,
         index: true,
+    },
+    key: {
+        type: String,
     },
 });
 

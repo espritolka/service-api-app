@@ -17,18 +17,11 @@ router.get('/', function (req, res, next) {
 
     var newMaster = new Master({
       name: req.body.name,
-      label: req.body.name,
-      value: '123'
     })
-    var id = '';
+ 
     Master.createMaster(newMaster, function (err, master) {
       if (err) throw err;
-      id = master._id
-      console.log('id -->>',id)
-      Master.updateMasterById(id, {value: id}, function (err, master){
         res.send(master).end()
-      })
-     // res.send(master).end()
     });
    
 

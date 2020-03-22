@@ -6,12 +6,6 @@ var MasterSchema = mongoose.Schema({
         type: String,
         index: true,
         unique: true,
-    },
-    label: {
-      type: String,
-    },
-    value:{
-      type: String,
     }
 });
 
@@ -39,4 +33,10 @@ module.exports.updateMasterById = function(idMaster, data, callback){
 
   Master.updateOne({ _id: idMaster }, data, { new: true },callback)
   
+}
+
+module.exports.deleteMasterById = function( idMaster, callback){
+
+  Master.findByIdAndDelete({ _id: idMaster }, callback)
+
 }

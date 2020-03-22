@@ -11,12 +11,6 @@ var ServiceSchema = mongoose.Schema({
         type: Number,
         index: true,
     },
-    label: {
-        type: String,
-      },
-    value:{
-        type: String,
-      }
 });
 
 var Service = module.exports = mongoose.model('Service', ServiceSchema);

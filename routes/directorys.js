@@ -17,14 +17,15 @@ router.get('/:type', function (req, res, next) {
 
     var newDirectory = new Directory({
       type: req.params.type,
-      value: req.body.value,
-      label: req.body.label
+      key: req.body.key,
+      label: req.body.label,
     })
 
     Directory.createDirectory(newDirectory, function (err, directory) {
       if (err) throw err;
-      res.send(directory).end()
-    });
+
+        res.send(directory)
+      });
 
   })
   .put('/:type/:id', function (req, res, next) {

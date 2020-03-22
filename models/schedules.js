@@ -7,13 +7,16 @@ var SchedulesSchema = mongoose.Schema({
         unique: false,
     },
     time: {
-        type: String,
+        type: Object,
     },
     date: {
         type: Date
     },
     master: {
-        type: String
+        type: Object
+    },
+    register:{
+        type: Object
     }
 
 });
@@ -29,18 +32,24 @@ module.exports.createSchedule = function (newSchedules, callback) {
 
 module.exports.getScheduleById = function (id, callback) {
 
-    Schedules.findById(id, callback);
+    Schedule.findById(id, callback);
 
 }
 
 module.exports.getSchedules = function(callback){
 
-    Schedules.find(callback);
+    Schedule.find(callback);
 
 }
 
 module.exports.updateSchedulesById = function(idSchedule, data, callback){
 
     Schedule.updateOne({ _id: idSchedule }, data, { new: true },callback)
+  
+}
+
+module.exports.deleteSchedulesById = function( idSchedules, callback){
+
+    Schedule.findByIdAndDelete({ _id: idSchedules }, callback)
   
 }
