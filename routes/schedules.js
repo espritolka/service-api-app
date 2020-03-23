@@ -26,10 +26,9 @@ router.get('/', function (req, res, next) {
       Schedule.createSchedule(newSchedule, function (err, schedule) {
 
         if (err) throw err;
-        
+        res.send(schedule).end()
       });
     })
-    res.send('ok').end()
     
   })
   .put('/schedule/:id', function (req, res, next) {
@@ -38,10 +37,10 @@ router.get('/', function (req, res, next) {
     })
   })
   .delete('/schedule/:id', function (req, res, next) {
-    Schedule.getScheduleById(req.params.id, function(err,schedule ){
+    Schedule.getScheduleById(req.params.id, function(err, schedule){
 
       if (schedule.free){
-        Schedule.findByIdAndDelete(req.params.id, function(err, directory){
+        Schedule.findByIdAndDelete(req.params.id, function(err, schedule){
           if (err) throw err;
           res.send("ok");
         })

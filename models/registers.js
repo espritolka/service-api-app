@@ -1,12 +1,47 @@
-var path = require('path');
+var mongoose = require('mongoose');
 
-module.exports = function (mongoose) {
+// Register Schema
+var RegisterSchema = mongoose.Schema({
+    schedule: {
+        type: Object,
+        index: true,
+    },
+    service: {
+        type: Object
+    },
+    client:{
+      type: Object
+    }
+});
 
+var Register = module.exports = mongoose.model('Register', RegisterSchema);
+
+
+module.exports.createRegister = function (newRegister, callback) {
+
+    newRegister.save(callback);
+
+}
+
+module.exports.getRegisterById = function (id, callback) {
+
+  Register.findById(id, callback);
+
+}
+
+module.exports.getRegisters = function(callback){
+
+  Register.find(callback);
+
+}
+module.exports.updateRegisterById = function(idRegister, data, callback){
+
+  Register.updateOne({ _id: idRegister }, data, { new: true },callback)
   
-  var Schema = new mongoose.Schema({
-    name: { type: String, required: true }
-  });
+}
 
-  
-  return mongoose.model(path.basename(module.filename, '.js'), Schema);
-};
+module.exports.deleteRegisterById = function( idRegister, callback){
+
+  Register.findByIdAndDelete({ _id: idMaster }, callback)
+
+}

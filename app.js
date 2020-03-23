@@ -10,7 +10,8 @@ var indexRouter = require('./routes/index');
 var mastersRouter = require('./routes/masters');
 var servicesRouter = require('./routes/services');
 var schedulesRouter = require('./routes/schedules');
-var directoryRouter = require('./routes/directorys')
+var directoryRouter = require('./routes/directorys');
+var registerRouter = require('./routes/registers')
 
 var app = express();
 
@@ -35,7 +36,8 @@ app.use('/', indexRouter);
 app.use('/api/masters', mastersRouter);
 app.use('/api/services', servicesRouter);
 app.use('/api/schedules', schedulesRouter);
-app.use('/api/directory', directoryRouter)
+app.use('/api/directory', directoryRouter);
+app.use('/api/registers', registerRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
