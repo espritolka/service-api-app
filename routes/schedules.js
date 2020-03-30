@@ -42,11 +42,14 @@ router.get('/', function (req, res, next) {
       if (schedule.free){
         Schedule.findByIdAndDelete(req.params.id, function(err, schedule){
           if (err) throw err;
-          res.send("ok");
+          const response = {
+            message: "Schedule deleted",
+            id: schedule._id
+        };
+        return res.status(200).send(response);
         })
       } else {
-        res.status(422)
-        res.send("Нельзя удалить запись со статусом 'Занято'" + schedule._id);
+        res.status(422).send("Нельзя удалить запись со статусом 'Занято'" + schedule._id);
       }
     })
   })

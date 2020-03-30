@@ -31,8 +31,7 @@ router.get('/', function (req, res, next) {
            if(err){
                Register.deleteRegisterById(register._id, function(err, reg){
                    if (err) throw err;
-                   res.status(422)
-                   res.send('Ошибка добавления записи').end
+                   res.status(422).send('Ошибка добавления записи').end
                   }
                 )
            } else {
@@ -57,7 +56,11 @@ router.get('/', function (req, res, next) {
             register: {}
           }
           Schedule.updateSchedulesById(req.params.id, data, function(err, schedule){
-            res.send("ok");
+            const response = {
+                message: "Register deleted",
+                id: register._id
+            };
+            return res.status(200).send(response);
           })
 
   })
