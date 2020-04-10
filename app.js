@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+//var expressValidator = require('express-validator')
 var config = require('./config'); // Используемая конфигурация
 var db = require('./mongoose'); // Файл работы с базой MongoDB
 
@@ -23,6 +24,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+//app.use(expressValidator());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next) {

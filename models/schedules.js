@@ -44,7 +44,7 @@ module.exports.getSchedules = function(callback){
 
 module.exports.updateSchedulesById = function(idSchedule, data, callback){
 
-    Schedule.updateOne({ _id: idSchedule }, data, { new: true },callback)
+    Schedule.updateOne({ _id: idSchedule }, data, callback)
   
 }
 

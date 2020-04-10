@@ -42,6 +42,6 @@ module.exports.updateRegisterById = function(idRegister, data, callback){
 
 module.exports.deleteRegisterById = function( idRegister, callback){
 
-  Register.findByIdAndDelete({ _id: idMaster }, callback)
+  Register.findByIdAndDelete({ _id: idRegister }, callback)
 
 }
