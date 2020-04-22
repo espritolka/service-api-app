@@ -1,0 +1,6 @@
+{
+    "port" : 27017,
+    "mongoose": {
+      "uri": "mongodb://localhost/serviceDB"
+    }
+  }
